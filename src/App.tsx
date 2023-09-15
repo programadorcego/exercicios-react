@@ -1,46 +1,17 @@
-import {FC, useState} from "react";
+import {FC} from "react";
+import Contador from "./Components/Contador";
+import "./App.css";
 
 const App: FC<{}> = () => {
-	const [valor1, setValor1] = useState<number>(() => 1);
-	const [valor2, setValor2] = useState<number>(() => 2);
-	
-	function diminuir1(): void
-	{
-		setValor1(valor_antigo => valor_antigo - 1);
-	}
-	
-	function aumentar1(): void
-	{
-		setValor1(valor_antigo => valor_antigo + 1);
-	}
-	
-	function diminuir2(): void
-	{
-		setValor2(valor_antigo => valor_antigo - 1);
-	}
-	
-	function aumentar2(): void
-	{
-		setValor2(valor_antigo => valor_antigo + 1);
-	}
-
 	return (
 		<>
-			<h1>Exercício useState #01</h1>
+			<h1>Exercício useState #02</h1>
 			
-			<button onClick={diminuir1}>-</button>
-			<button onClick={aumentar1}>+</button>
-			
-			<p>{valor1}</p>
-			<hr />
-			
-			<button onClick={diminuir2}>-</button>
-			<button onClick={aumentar2}>+</button>
-			
-			<p>{valor2}</p>
-			<hr/>
-			
-			<p>{`O resultado de ${valor1} X ${valor2} é ${valor1 * valor2}`}</p>
+			<div className="layout">
+				<Contador valor={1} />
+				<Contador valor={5} />
+				<Contador valor={10} />
+			</div>
 		</>
 	);
 };
