@@ -2,34 +2,26 @@ import {FC, useState} from "react";
 import ComponenteFilho from "./ComponenteFilho";
 
 const ComponentePai: FC<{}> = () => {
-	const [valor1, setValor1] = useState<number>(() => 0);
-	const [valor2, setValor2] = useState<number>(() => 0);
+	const [valor, setValor] = useState<number[]>(() => [0, 0, 0]);
 	
-	function atualizar1(unidade: number): void
+	function atualizar(index: number, unidade: number): void
 	{
-		setValor1(valor_antigo => valor_antigo + unidade);
-	}
-	
-	function atualizar2(unidade: number): void
-	{
-		setValor2(valor_antigo => valor_antigo + unidade);
+		let novo_valor = valor;
+		novo_valor[index] += unidade;
+		setValor(() => [...novo_valor]);
 	}
 	
 	return (
 		<>
-			<p>{valor1}</p>
-			<p>{valor2}</p>
+			<p>{valor[0]}</p>
+			<p>{valor[1]}</p>
+			<p>{valor[2]}</p>
 			
 			<hr/>
 			
-			<ComponenteFilho funcao={atualizar1} unidade={5} />
-			<hr/>
-			
-			<ComponenteFilho funcao={atualizar2} unidade={10} />
-			
-			<hr />
-			
-			<p>{valor1 + valor2}</p>
+			<ComponenteFilho funcao={atualizar} index={0} unidade={1} />
+			<ComponenteFilho funcao={atualizar} index={1} unidade={1} />
+			<ComponenteFilho funcao={atualizar} index={2} unidade={1} />
 		</>
 	);
 };
