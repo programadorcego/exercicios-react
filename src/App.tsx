@@ -1,31 +1,19 @@
 import {FC, useState} from "react";
 
 const App: FC<{}> = () => {
-	type valorObj = {
-		nome: string;
-		sobrenome: string;
-		email: string;
-	}
-	
-	const [valor, setValor] = useState<valorObj>(() => ({
-		nome: "",
-		sobrenome: "",
-		email: ""
-	}));
+	const [logado, setLogado] = useState<boolean>(() => false);
 	
 	return (
 		<>
-			<h1>Exercício useState #06</h1>
+			<h1>Exercício useState #07</h1>
 			<hr/>
 			
-			<p>Nome: {valor.nome}</p>
-			<p>Sobrenome: {valor.sobrenome}</p>
-			<p>E-mail: {valor.email}</p>
-			<hr />
+			{logado && <p>Você está logado!</p>}
 			
-			<button onClick={() => setValor(valor_antigo => ({...valor_antigo, nome: "Willian"}))}>Alterar nome</button>
-			<button onClick={() => setValor(valor_antigo => ({...valor_antigo, sobrenome: "Pereira"}))}>Alterar Sobrenome</button>
-			<button onClick={() => setValor(valor_antigo => ({...valor_antigo, email: "programadorcego@gmail.com"}))}>Alterar E-mail</button>
+			<hr/>
+			
+			<button onClick={() => setLogado(valor_antigo => !valor_antigo)}>Alternar</button>
+			
 		</>
 	);
 };
