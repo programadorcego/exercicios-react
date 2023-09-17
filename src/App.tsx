@@ -1,20 +1,19 @@
 import {FC, useState} from "react";
-import "./App.css";
+import ComponenteA from "./Components/ComponenteA";
+import ComponenteB from "./Components/ComponenteB";
 
-const App: FC<{}> = () => {
-	const [classe, setClasse] = useState<boolean>(() => true);
-	
-	const classe1 = "classe1";
-	const classe2 = "classe2";
+const App: FC<{}> = (): JSX.Element => {
+	const [componente, setComponente] = useState<boolean>(() => true);
 	
 	return (
 		<>
-			<h1>Exercício useState #09</h1>
+			<h1>Exercício useState #10</h1>
 			<hr/>
 			
-			<p className={`paragrafo ${classe ? classe1 : classe2}`}>Parágrafo</p><hr />
+			{componente ? <ComponenteA /> : <ComponenteB />}
+			<hr />
 			
-			<button onClick={() => setClasse(classe_antiga => !classe_antiga)}>Alternar Classe</button>
+			<button onClick={() => setComponente(componente_antigo => !componente_antigo)}>Alternar Componente</button>
 					</>
 	);
 };
