@@ -1,24 +1,20 @@
 import {FC, useState} from "react";
+import "./App.css";
 
 const App: FC<{}> = () => {
-	const [tab, setTab] = useState<number>(() => 1);
+	const [classe, setClasse] = useState<boolean>(() => true);
+	
+	const classe1 = "classe1";
+	const classe2 = "classe2";
 	
 	return (
 		<>
-			<h1>Exercício useState #08</h1>
+			<h1>Exercício useState #09</h1>
 			<hr/>
 			
-			<select onChange={e => setTab(() => parseInt(e.target.value))}>
-				<option value="1">Tab 1</option>
-				<option value="2">Tab 2</option>
-				<option value="3">Tab 3</option>
-			</select>
+			<p className={`paragrafo ${classe ? classe1 : classe2}`}>Parágrafo</p><hr />
 			
-			<hr />
-			
-			{tab == 1 && <p>Tab 1</p>}
-			{tab == 2 && <p>Tab 2</p>}
-			{tab == 3 && <p>Tab 3</p>}
+			<button onClick={() => setClasse(classe_antiga => !classe_antiga)}>Alternar Classe</button>
 					</>
 	);
 };
