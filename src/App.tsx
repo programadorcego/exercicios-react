@@ -1,21 +1,16 @@
-import {FC, useState} from "react";
-import ComponenteA from "./Components/ComponenteA";
-import ComponenteB from "./Components/ComponenteB";
+import {ChangeEvent, useState} from "react";
 
-const App: FC<{}> = (): JSX.Element => {
-	const [componente, setComponente] = useState<boolean>(() => true);
+export default function App(): JSX.Element
+{
+	const [text, setText] = useState<string>(() => "");
 	
 	return (
 		<>
-			<h1>Exercício useState #10</h1>
-			<hr/>
+			<h1>Exercício useState #11</h1>
 			
-			{componente ? <ComponenteA /> : <ComponenteB />}
-			<hr />
+			<p>{text}</p>
 			
-			<button onClick={() => setComponente(componente_antigo => !componente_antigo)}>Alternar Componente</button>
-					</>
+			<input type="text" value={text} onChange={(e: ChangeEvent<HTMLInputElement>) => setText(() => e.target.value)} />
+		</>
 	);
-};
-
-export default App;
+}
